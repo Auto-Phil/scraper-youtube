@@ -1,5 +1,5 @@
 """
-Export results to Google Sheets (primary) or CSV (fallback).
+Export results to Supabase (primary) or CSV (fallback).
 """
 
 import csv
@@ -7,10 +7,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-import pandas as pd
-
 import config
-from utils import log
+from utils import log, upsert_channel
 
 
 # Column order for export
@@ -87,52 +85,28 @@ def build_row(channel: dict, analysis: dict, score: float, niche: str) -> dict:
     return row
 
 
-def export_to_google_sheets(rows: list[dict]) -> bool:
-    """Append rows to a Google Sheet. Returns True on success."""
-    try:
-        import gspread
-        from google.oauth2.service_account import Credentials
-    except ImportError:
-        log.warning("gspread not installed — falling back to CSV")
-        return False
-
-    creds_path = Path(config.GOOGLE_SHEETS_CREDENTIALS_FILE)
-    if not creds_path.exists():
-        log.warning("Google Sheets credentials file not found at %s — falling back to CSV", creds_path)
+def export_to_supabase(rows: list[dict]) -> bool:
+    """Export rows to Supabase. Returns True on success."""
+    if not config.SUPABASE_URL or not config.SUPABASE_KEY:
+        log.warning("Supabase not configured — falling back to CSV")
         return False
 
     try:
-        scopes = [
-            "https://www.googleapis.com/auth/spreadsheets",
-            "https://www.googleapis.com/auth/drive",
-        ]
-        creds = Credentials.from_service_account_file(str(creds_path), scopes=scopes)
-        gc = gspread.authorize(creds)
-
-        # Open or create the sheet
-        try:
-            sheet = gc.open(config.GOOGLE_SHEET_NAME)
-        except gspread.SpreadsheetNotFound:
-            sheet = gc.create(config.GOOGLE_SHEET_NAME)
-            log.info("Created new Google Sheet: %s", config.GOOGLE_SHEET_NAME)
-
-        worksheet = sheet.sheet1
-
-        # Add header if sheet is empty
-        existing = worksheet.get_all_values()
-        if not existing:
-            worksheet.append_row(COLUMNS)
-
-        # Append each row
         for row in rows:
-            values = [str(row.get(col, "")) for col in COLUMNS]
-            worksheet.append_row(values)
-
-        log.info("Exported %d rows to Google Sheet '%s'", len(rows), config.GOOGLE_SHEET_NAME)
+            channel_id = row.get("channel_id")
+            channel_name = row.get("channel_name")
+            if not channel_id or not channel_name:
+                log.warning("Skipping row with missing channel_id or channel_name")
+                continue
+            
+            # Use the existing upsert_channel function from utils
+            upsert_channel(channel_id, channel_name, row)
+        
+        log.info("Exported %d rows to Supabase", len(rows))
         return True
 
     except Exception as e:
-        log.error("Google Sheets export failed: %s", e)
+        log.error("Supabase export failed: %s", e)
         return False
 
 
@@ -156,15 +130,18 @@ def export_to_csv(rows: list[dict]) -> str:
 
 def export(rows: list[dict]) -> str:
     """
-    Try Google Sheets first; fall back to CSV.
+    Try Supabase first; fall back to CSV.
     Returns a description of where the data was exported.
     """
     if not rows:
         log.info("No rows to export")
         return "No data to export"
 
-    if export_to_google_sheets(rows):
-        return f"Google Sheet '{config.GOOGLE_SHEET_NAME}'"
+    if export_to_supabase(rows):
+        # Also export to CSV as backup
+        csv_path = export_to_csv(rows)
+        return f"Supabase (backup CSV: {csv_path})"
 
+    # Fallback if Supabase fails
     path = export_to_csv(rows)
     return f"CSV file: {path}"

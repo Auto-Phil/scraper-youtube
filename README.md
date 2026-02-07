@@ -1,6 +1,6 @@
 # YouTube Channel Scraper
 
-Finds YouTube creators who are good candidates for a shorts creation service. Searches by niche, filters by subscriber count and content mix, scores leads, and exports to Google Sheets or CSV.
+Finds YouTube creators who are good candidates for a shorts creation service. Searches by niche, filters by subscriber count and content mix, scores leads, and exports to Supabase (with CSV backup).
 
 ## Setup
 
@@ -18,55 +18,89 @@ Finds YouTube creators who are good candidates for a shorts creation service. Se
 pip install -r requirements.txt
 ```
 
-### 3. Configure Environment
+### 3. Set Up Supabase
+
+1. Go to [supabase.com](https://supabase.com) and create a free account
+2. Create a new project
+3. Go to Project Settings → API
+4. Copy your **Project URL** and **anon/service_role key**
+5. Go to the SQL Editor and run the contents of `supabase_schema.sql` to create tables
+
+### 4. Configure Environment
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env` and add your YouTube API key:
+Edit `.env` and add your credentials:
 
 ```
-YOUTUBE_API_KEY=your_key_here
+YOUTUBE_API_KEY=your_youtube_api_key
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_KEY=your_supabase_key
 ```
 
-### 4. Google Sheets Export (Optional)
+### 5. Migrate Existing Data (Optional)
 
-If you want results pushed to Google Sheets:
+If you have existing CSV exports to import:
 
-1. In Google Cloud Console, enable the **Google Sheets API** and **Google Drive API**
-2. Create a Service Account under Credentials
-3. Download the JSON key file as `credentials.json` in the project root
-4. Create a Google Sheet and share it with the service account email (found in the JSON file)
-5. Set the sheet name in `.env`:
-   ```
-   GOOGLE_SHEET_NAME=YouTube Scraper Leads
-   GOOGLE_SHEETS_CREDENTIALS_FILE=credentials.json
-   ```
-
-If not configured, results automatically export to CSV.
+```bash
+python migrate_csv_to_supabase.py
+```
 
 ## Usage
 
-### Manual Run (All Niches)
+### Run the Scraper
 
+**All niches:**
 ```bash
 python scraper.py
 ```
 
-### Run Specific Niches
-
+**Specific niches:**
 ```bash
 python scraper.py "fitness training" "cooking recipes"
 ```
 
-### Daily Scheduler
-
+**Daily scheduler:**
 ```bash
 python scheduler.py
 ```
 
 This runs the scraper immediately, then again every day at 3:00 AM (configurable in `config.py`).
+
+### Manage Leads
+
+**List all leads:**
+```bash
+python manage_leads.py list
+```
+
+**Filter by status:**
+```bash
+python manage_leads.py list --status new
+python manage_leads.py list --status contacted
+```
+
+**Filter by niche:**
+```bash
+python manage_leads.py list --niche "retro gaming"
+```
+
+**Show detailed info:**
+```bash
+python manage_leads.py show UCxxxxxxxxxxxxxxxxxx
+```
+
+**Update lead status:**
+```bash
+python manage_leads.py update UCxxxxxxxxxxxxxxxxxx --status contacted
+```
+
+**View statistics:**
+```bash
+python manage_leads.py stats
+```
 
 ### Windows Task Scheduler Alternative
 
@@ -101,7 +135,7 @@ All settings are in `config.py`:
 | `MIN_LONGFORM_COUNT` | 20 | Min long-form videos required |
 | `MAX_DAYS_SINCE_UPLOAD` | 30 | Must have uploaded within N days |
 | `MIN_AVG_DURATION_SECONDS` | 480 | Preferred avg video length (8 min) |
-| `SEARCH_NICHES` | 11 niches | List of search keywords |
+| `SEARCH_NICHES` | 38 niches | List of search keywords |
 | `MAX_CHANNELS_PER_RUN` | 100 | Max channels to analyze per run |
 | `SCHEDULE_TIME` | "03:00" | Daily run time (24h format) |
 
@@ -117,7 +151,17 @@ The 1-10 priority score uses these weights:
 
 ## Output
 
-### CSV Columns
+### Supabase Tables
+
+**`channels` table** - All scraped leads with full metadata
+**`outreach` table** - Email sequence tracking (for future email automation)
+
+You can view and manage leads via:
+- Supabase dashboard (web UI)
+- `manage_leads.py` CLI tool
+- CSV backups in the project directory
+
+### CSV Backup Columns
 
 | Column | Description |
 |---|---|
@@ -158,19 +202,23 @@ A typical run searching 11 niches uses ~1,100 units on search alone, leaving ~8,
 
 ```
 youtube_scraper/
-├── .env                  # API keys (not in git)
-├── .env.example          # Template
+├── .env                          # API keys (not in git)
+├── .env.example                  # Template
 ├── .gitignore
 ├── requirements.txt
-├── config.py             # All configurable settings
-├── scraper.py            # Main entry point
-├── youtube_api.py        # YouTube API wrapper
-├── data_processor.py     # Filtering and scoring
-├── export.py             # Google Sheets / CSV export
-├── scheduler.py          # Daily automation
-├── utils.py              # Logging, DB, helpers
-├── logs/                 # Daily log files
-└── cache/                # SQLite database
+├── config.py                     # All configurable settings
+├── scraper.py                    # Main entry point
+├── youtube_api.py                # YouTube API wrapper
+├── data_processor.py             # Filtering and scoring
+├── export.py                     # Supabase / CSV export
+├── scheduler.py                  # Daily automation
+├── utils.py                      # Logging, Supabase client, helpers
+├── manage_leads.py               # CLI for lead management
+├── migrate_csv_to_supabase.py    # CSV import tool
+├── supabase_schema.sql           # Database schema
+├── email_sequences.md            # Cold outreach templates
+├── logs/                         # Daily log files
+└── cache/                        # (unused, kept for compatibility)
 ```
 
 ## Troubleshooting
@@ -184,10 +232,10 @@ youtube_scraper/
 - Wait until midnight Pacific time for quota reset
 - Or request a quota increase in Google Cloud Console
 
-**Google Sheets export fails**
-- Verify `credentials.json` exists and is a valid service account key
-- Make sure the Google Sheet is shared with the service account email
-- Check that Sheets API and Drive API are enabled in your Google Cloud project
+**Supabase connection fails**
+- Verify `SUPABASE_URL` and `SUPABASE_KEY` are set in `.env`
+- Make sure you've run `supabase_schema.sql` in the Supabase SQL Editor
+- Check that your Supabase project is active (free tier doesn't pause)
 
 **No channels found**
 - Try broader search terms in `config.py` → `SEARCH_NICHES`

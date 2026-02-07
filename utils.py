@@ -3,13 +3,14 @@ Helper utilities: logging, quota tracking, database, and email.
 """
 
 import logging
-import sqlite3
 import smtplib
 import json
 from datetime import datetime, timezone
 from email.mime.text import MIMEText
 from pathlib import Path
 from typing import Optional
+
+from supabase import create_client, Client
 
 import config
 
@@ -72,57 +73,110 @@ class QuotaTracker:
         return f"Quota used: {self._used} / {self._limit} ({self.remaining} remaining)"
 
 
-# ── SQLite database for deduplication & status tracking ──────────────────────
+# ── Supabase client for data storage ────────────────────────────────────────
+
+def get_supabase_client() -> Client:
+    """Get or create Supabase client instance."""
+    if not config.SUPABASE_URL or not config.SUPABASE_KEY:
+        raise RuntimeError(
+            "SUPABASE_URL and SUPABASE_KEY must be set in .env file. "
+            "Get them from: https://supabase.com/dashboard/project/_/settings/api"
+        )
+    return create_client(config.SUPABASE_URL, config.SUPABASE_KEY)
+
 
 def init_db():
-    conn = sqlite3.connect(str(config.DB_PATH))
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS channels (
-            channel_id   TEXT PRIMARY KEY,
-            channel_name TEXT,
-            first_seen   TEXT,
-            last_scraped TEXT,
-            status       TEXT DEFAULT 'new',
-            data_json    TEXT
-        )
-    """)
-    conn.commit()
-    conn.close()
+    """Verify Supabase connection. Tables should already exist (run supabase_schema.sql first)."""
+    try:
+        supabase = get_supabase_client()
+        # Test connection by counting channels
+        result = supabase.table("channels").select("id", count="exact").limit(1).execute()
+        log.info("Supabase connection verified (%d channels in database)", result.count or 0)
+    except Exception as e:
+        log.error("Supabase connection failed: %s", e)
+        log.error("Make sure you've run supabase_schema.sql in your Supabase SQL Editor")
+        raise
 
 
 def channel_exists(channel_id: str) -> bool:
-    conn = sqlite3.connect(str(config.DB_PATH))
-    row = conn.execute("SELECT 1 FROM channels WHERE channel_id = ?", (channel_id,)).fetchone()
-    conn.close()
-    return row is not None
+    """Check if a channel already exists in the database."""
+    try:
+        supabase = get_supabase_client()
+        result = supabase.table("channels").select("id").eq("channel_id", channel_id).limit(1).execute()
+        return len(result.data) > 0
+    except Exception as e:
+        log.error("Error checking if channel exists: %s", e)
+        return False
 
 
 def upsert_channel(channel_id: str, channel_name: str, data: dict):
-    now = datetime.now(timezone.utc).isoformat()
-    conn = sqlite3.connect(str(config.DB_PATH))
-    conn.execute("""
-        INSERT INTO channels (channel_id, channel_name, first_seen, last_scraped, status, data_json)
-        VALUES (?, ?, ?, ?, 'new', ?)
-        ON CONFLICT(channel_id) DO UPDATE SET
-            last_scraped = excluded.last_scraped,
-            data_json    = excluded.data_json
-    """, (channel_id, channel_name, now, now, json.dumps(data)))
-    conn.commit()
-    conn.close()
+    """Insert or update a channel record in Supabase."""
+    try:
+        supabase = get_supabase_client()
+        
+        # Prepare the record
+        record = {
+            "channel_id": channel_id,
+            "channel_name": channel_name,
+            "channel_url": data.get("channel_url", ""),
+            "subscriber_count": data.get("subscriber_count", 0),
+            "total_view_count": data.get("total_view_count", 0),
+            "total_video_count": data.get("total_video_count", 0),
+            "shorts_count": data.get("shorts_count", 0),
+            "longform_count": data.get("longform_count", 0),
+            "last_upload_date": data.get("last_upload_date"),
+            "upload_frequency": data.get("upload_frequency", 0),
+            "avg_views": data.get("avg_views", 0),
+            "avg_duration_seconds": data.get("avg_duration_seconds", 0),
+            "engagement_rate": data.get("engagement_rate", 0),
+            "priority_score": data.get("priority_score", 0),
+            "primary_niche": data.get("primary_niche", ""),
+            "country": data.get("country", ""),
+            "language": data.get("language", ""),
+            "contact_email": data.get("contact_email", ""),
+            "contact_available": bool(data.get("contact_email")),
+            "top_videos": json.dumps([
+                {"title": data.get("top_video_1_title", ""), "url": data.get("top_video_1_url", "")},
+                {"title": data.get("top_video_2_title", ""), "url": data.get("top_video_2_url", "")},
+                {"title": data.get("top_video_3_title", ""), "url": data.get("top_video_3_url", "")},
+            ]),
+            "status": data.get("status", "new"),
+            "last_scraped": datetime.now(timezone.utc).isoformat(),
+        }
+        
+        # Upsert (insert or update on conflict)
+        supabase.table("channels").upsert(record, on_conflict="channel_id").execute()
+        log.debug("Upserted channel %s to Supabase", channel_id)
+        
+    except Exception as e:
+        log.error("Error upserting channel %s: %s", channel_id, e)
+        raise
 
 
 def update_channel_status(channel_id: str, status: str):
-    conn = sqlite3.connect(str(config.DB_PATH))
-    conn.execute("UPDATE channels SET status = ? WHERE channel_id = ?", (status, channel_id))
-    conn.commit()
-    conn.close()
+    """Update the status of a channel."""
+    valid_statuses = ['new', 'contacted', 'replied', 'converted', 'rejected', 'paused']
+    if status not in valid_statuses:
+        raise ValueError(f"Invalid status '{status}'. Must be one of: {valid_statuses}")
+    
+    try:
+        supabase = get_supabase_client()
+        supabase.table("channels").update({"status": status}).eq("channel_id", channel_id).execute()
+        log.info("Updated channel %s status to '%s'", channel_id, status)
+    except Exception as e:
+        log.error("Error updating channel status: %s", e)
+        raise
 
 
 def get_all_channel_ids() -> set:
-    conn = sqlite3.connect(str(config.DB_PATH))
-    rows = conn.execute("SELECT channel_id FROM channels").fetchall()
-    conn.close()
-    return {r[0] for r in rows}
+    """Get all channel IDs from the database for deduplication."""
+    try:
+        supabase = get_supabase_client()
+        result = supabase.table("channels").select("channel_id").execute()
+        return {row["channel_id"] for row in result.data}
+    except Exception as e:
+        log.error("Error fetching channel IDs: %s", e)
+        return set()
 
 
 # ── Email notification ───────────────────────────────────────────────────────
