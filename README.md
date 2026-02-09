@@ -1,6 +1,23 @@
 # YouTube Channel Scraper
 
+**Status: ✅ Fully Operational & Tested**
+
 Finds YouTube creators who are good candidates for a shorts creation service. Searches by niche, filters by subscriber count and content mix, scores leads, and exports to Supabase (with CSV backup).
+
+## Quick Start
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Configure .env with your API keys (see Setup below)
+
+# 3. Test with a single niche
+python scraper.py "retro gaming review"
+
+# 4. View your leads
+python manage_leads.py list
+```
 
 ## Setup
 
@@ -23,8 +40,10 @@ pip install -r requirements.txt
 1. Go to [supabase.com](https://supabase.com) and create a free account
 2. Create a new project
 3. Go to Project Settings → API
-4. Copy your **Project URL** and **anon/service_role key**
+4. Copy your **Project URL** (format: `https://xxxxx.supabase.co`) and **service_role key** (secret key)
 5. Go to the SQL Editor and run the contents of `supabase_schema.sql` to create tables
+
+**Important:** Use the API URL format `https://xxxxx.supabase.co`, NOT the dashboard URL
 
 ### 4. Configure Environment
 
