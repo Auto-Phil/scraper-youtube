@@ -96,8 +96,8 @@ async function handleCheckout(event) {
                 quantity: 1
             }],
             mode: 'payment',
-            successUrl: window.location.origin + '/payment/success.html?session_id={CHECKOUT_SESSION_ID}',
-            cancelUrl: window.location.origin + '/payment/cancel.html',
+            successUrl: window.location.origin + '/success.html?session_id={CHECKOUT_SESSION_ID}',
+            cancelUrl: window.location.origin + '/cancel.html',
             clientReferenceId: packageName,
             // Optional: Auto-apply discount coupon
             // discounts: [{
