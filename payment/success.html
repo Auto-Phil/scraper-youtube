@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Auto-Phil Shorts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .success-container {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #24b47e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .checkmark {
+            width: 40px;
+            height: 40px;
+            border: 4px solid white;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .checkmark::after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 2px;
+            width: 12px;
+            height: 20px;
+            border: solid white;
+            border-width: 0 4px 4px 0;
+            transform: rotate(45deg);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #1a1f36;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #697386;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .info-box {
+            background: #f6f9fc;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .info-box h2 {
+            font-size: 18px;
+            color: #1a1f36;
+            margin-bottom: 16px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e3e8ee;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #697386;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #1a1f36;
+            font-weight: 600;
+        }
+
+        .next-steps {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 32px;
+            text-align: left;
+            border-radius: 4px;
+        }
+
+        .next-steps h3 {
+            color: #856404;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .next-steps ol {
+            color: #856404;
+            padding-left: 20px;
+        }
+
+        .next-steps li {
+            margin-bottom: 8px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #6772e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            margin: 8px;
+        }
+
+        .cta-button:hover {
+            background: #5469d4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(103, 114, 229, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: white;
+            color: #6772e5;
+            border: 2px solid #6772e5;
+        }
+
+        .cta-button.secondary:hover {
+            background: #f6f9fc;
+        }
+
+        .session-id {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #697386;
+            margin-top: 24px;
+            padding: 12px;
+            background: #f6f9fc;
+            border-radius: 4px;
+            word-break: break-all;
+        }
+
+        @media (max-width: 600px) {
+            .success-container {
+                padding: 32px 24px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">
+            <div class="checkmark"></div>
+        </div>
+
+        <h1>Payment Successful! 🎉</h1>
+        <p class="subtitle">
+            Thank you for your purchase! Your payment has been processed successfully, and you're all set to get started with Auto-Phil Shorts.
+        </p>
+
+        <div class="info-box">
+            <h2>Order Summary</h2>
+            <div class="info-item">
+                <span class="info-label">Package:</span>
+                <span class="info-value" id="package-name">Loading...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Amount Paid:</span>
+                <span class="info-value" id="amount-paid">Loading...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Discount Applied:</span>
+                <span class="info-value" style="color: #24b47e;">50% OFF</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Order Date:</span>
+                <span class="info-value" id="order-date">Loading...</span>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h3>📋 What Happens Next?</h3>
+            <ol>
+                <li>You'll receive a confirmation email within 5 minutes with your receipt</li>
+                <li>Our team will contact you within 24 hours to collect your video content</li>
+                <li>We'll start creating your optimized shorts immediately</li>
+                <li>Expect delivery based on your package size (3-10 business days)</li>
+            </ol>
+        </div>
+
+        <div>
+            <a href="mailto:support@autophilshorts.com" class="cta-button">Contact Support</a>
+            <a href="../index.html" class="cta-button secondary">Return to Home</a>
+        </div>
+
+        <div class="session-id">
+            Session ID: <span id="session-id">N/A</span>
+        </div>
+    </div>
+
+    <script>
+        // Extract session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+        
+        if (sessionId) {
+            document.getElementById('session-id').textContent = sessionId;
+        }
+
+        // Set current date
+        const now = new Date();
+        document.getElementById('order-date').textContent = now.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // You can fetch actual order details from Stripe using the session_id
+        // For now, we'll show placeholder text
+        document.getElementById('package-name').textContent = 'Auto-Phil Shorts Package';
+        document.getElementById('amount-paid').textContent = 'See confirmation email';
+
+        // Optional: Track conversion event
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'purchase', {
+                transaction_id: sessionId,
+                value: 0,
+                currency: 'USD'
+            });
+        }
+
+        if (typeof plausible !== 'undefined') {
+            plausible('Purchase');
+        }
+    </script>
+</body>
+</html>

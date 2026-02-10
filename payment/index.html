@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Phil Shorts - Pricing | 50% Off Limited Time</title>
+    <meta name="description" content="Professional YouTube Shorts creation service. Get 50% off all packages through February 2026.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Discount Banner -->
+    <div class="discount-banner">
+        <div class="container">
+            <div class="banner-content">
+                <svg class="banner-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                </svg>
+                <span class="banner-text">Limited Time: <strong>50% OFF</strong> All Packages Through February!</span>
+                <div class="countdown" id="countdown">
+                    <span id="days">00</span>d 
+                    <span id="hours">00</span>h 
+                    <span id="minutes">00</span>m 
+                    <span id="seconds">00</span>s
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Auto-Phil Shorts</h1>
+                <p class="tagline">Professional YouTube Shorts That Go Viral</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2 class="hero-title">Transform Your Long-Form Content Into Viral Shorts</h2>
+            <p class="hero-subtitle">Professional editing, optimized for maximum engagement. Choose your package and save 50% today.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="pricing">
+        <div class="container">
+            <div class="pricing-grid">
+                
+                <!-- 10 Pack -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3 class="card-title">10 Pack</h3>
+                    </div>
+                    <div class="card-pricing">
+                        <div class="price-original">$99.00</div>
+                        <div class="price-current">$49.50</div>
+                        <div class="price-per-unit">$4.95 per short</div>
+                    </div>
+                    <button class="cta-button" data-price-id="PRICE_ID_10_PACK" data-package="10 Pack">
+                        Get 50% Off Now
+                    </button>
+                </div>
+
+                <!-- 25 Pack -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3 class="card-title">25 Pack</h3>
+                    </div>
+                    <div class="card-pricing">
+                        <div class="price-original">$199.00</div>
+                        <div class="price-current">$99.50</div>
+                        <div class="price-per-unit">$3.98 per short</div>
+                        <div class="savings-badge">Save $99.50</div>
+                    </div>
+                    <button class="cta-button" data-price-id="PRICE_ID_25_PACK" data-package="25 Pack">
+                        Get 50% Off Now
+                    </button>
+                </div>
+
+                <!-- 50 Pack - MOST POPULAR -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="card-header">
+                        <h3 class="card-title">50 Pack</h3>
+                    </div>
+                    <div class="card-pricing">
+                        <div class="price-original">$349.00</div>
+                        <div class="price-current">$174.50</div>
+                        <div class="price-per-unit">$3.49 per short</div>
+                        <div class="savings-badge">Save $174.50</div>
+                    </div>
+                    <button class="cta-button primary" data-price-id="PRICE_ID_50_PACK" data-package="50 Pack">
+                        Get 50% Off Now
+                    </button>
+                </div>
+
+                <!-- 100 Pack -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3 class="card-title">100 Pack</h3>
+                    </div>
+                    <div class="card-pricing">
+                        <div class="price-original">$549.00</div>
+                        <div class="price-current">$274.50</div>
+                        <div class="price-per-unit">$2.75 per short</div>
+                        <div class="savings-badge">Save $274.50</div>
+                    </div>
+                    <button class="cta-button" data-price-id="PRICE_ID_100_PACK" data-package="100 Pack">
+                        Get 50% Off Now
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Auto-Phil Shorts?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
+                    <h3>Professional Quality</h3>
+                    <p>Expert editing that makes your content stand out and captures attention in the first 3 seconds.</p>
+                </div>
+                <div class="feature">
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                    </svg>
+                    <h3>Viral Optimization</h3>
+                    <p>We analyze trending formats and optimize every frame for maximum engagement and shares.</p>
+                </div>
+                <div class="feature">
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                    </svg>
+                    <h3>Fast Turnaround</h3>
+                    <p>Get your shorts delivered quickly so you can maintain a consistent posting schedule.</p>
+                </div>
+                <div class="feature">
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
+                    <h3>Secure Payment</h3>
+                    <p>Powered by Stripe. Your payment information is encrypted and secure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How long does it take to get my shorts?</h3>
+                    <p>Turnaround time depends on package size. Typically 3-5 business days for smaller packs, 7-10 days for larger packs.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What if I'm not satisfied?</h3>
+                    <p>We offer unlimited revisions to ensure you're 100% happy with the final product.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What format will I receive?</h3>
+                    <p>All shorts are delivered in 9:16 vertical HD format, optimized for YouTube Shorts, Instagram Reels, and TikTok.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I use my own footage?</h3>
+                    <p>Absolutely! Send us your long-form videos and we'll transform them into engaging shorts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust">
+        <div class="container">
+            <div class="trust-badges">
+                <div class="badge">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236772e5'%3E%3Cpath d='M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 1.352 0 2.227.554 2.474 1.305h2.16c-.279-1.527-1.537-2.66-3.634-2.66v-2.08h-2v2.08c-2.042.195-3.542 1.337-3.542 3.041 0 1.932 1.558 2.923 3.986 3.783 2.172.806 2.786 1.426 2.786 2.409 0 .831-.683 1.305-1.901 1.305-1.352 0-2.227-.554-2.474-1.305h-2.16c.279 1.527 1.537 2.66 3.634 2.66v2.08h2v-2.08c2.042-.195 3.542-1.337 3.542-3.041 0-1.932-1.558-2.923-3.986-3.783z'/%3E%3C/svg%3E" alt="Stripe" width="40">
+                    <p>Powered by Stripe</p>
+                </div>
+                <div class="badge">
+                    <svg class="badge-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
+                    <p>SSL Secure</p>
+                </div>
+                <div class="badge">
+                    <svg class="badge-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <p>Money Back Guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Auto-Phil Shorts. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#terms">Terms of Service</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
