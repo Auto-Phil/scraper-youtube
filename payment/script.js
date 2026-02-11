@@ -1,9 +1,9 @@
 // Payment Links - Get these from Stripe Dashboard → Products → Create Payment Link
 const PAYMENT_LINKS = {
-    'PRICE_ID_10_PACK': 'https://buy.stripe.com/YOUR_10_PACK_LINK',
-    'PRICE_ID_25_PACK': 'https://buy.stripe.com/YOUR_25_PACK_LINK',
-    'PRICE_ID_50_PACK': 'https://buy.stripe.com/YOUR_50_PACK_LINK',
-    'PRICE_ID_100_PACK': 'https://buy.stripe.com/YOUR_100_PACK_LINK'
+    'PRICE_ID_10_PACK': 'https://buy.stripe.com/bJe3cw1eXdRRe1O2Y2ebu04',
+    'PRICE_ID_25_PACK': 'https://buy.stripe.com/3cIeVeg9RbJJ9LycyCebu03',
+    'PRICE_ID_50_PACK': 'https://buy.stripe.com/9B65kE3n59BBf5SgOSebu02',
+    'PRICE_ID_100_PACK': 'https://buy.stripe.com/00w5kEe1JbJJ5vi56aebu01'
 };
 
 // Initialize when DOM is ready
