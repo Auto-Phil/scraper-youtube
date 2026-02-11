@@ -3,7 +3,8 @@
 **Offer:** We repurpose long-form YouTube videos into Shorts to grow reach and subscribers.
 **Target:** YouTube creators (10K-500K subs) with strong long-form content and little to no Shorts presence.
 **Sender:** Zack, Auto-Phil (uses default Gmail signature)
-**CTA approach:** Send a free pack of 5 sample Shorts made from their content upfront, before they even reply.
+**CTA approach:** Reply to the email or text 484-889-1131 to claim their free pack of 5 Shorts.
+**Subject line format:** Every subject is a question that includes the channel name, e.g. "Thinking about YouTube shorts for [Channel Name]?"
 
 ---
 
@@ -13,21 +14,17 @@ EMAIL 1 of 5: The Observation
 Send: Day 1 of sequence
 ═══════════════════════════════════════════
 
-SUBJECT: made 5 shorts from your [recent video topic] videos
+SUBJECT: Thinking about YouTube shorts for [Channel Name]?
 
 ---
 
-Hey [First Name],
+Hello there!
 
-Been watching your stuff for a while, and your [specific recent video title] video was genuinely great. Got me thinking, so I went ahead and made 5 Shorts from some of your best clips.
+Been watching your [channel niche] content for a while. We recently got to thinking, your long-form stuff has so many moments that would work perfectly as Shorts, but it looks like you haven't really leaned into them consistently.
 
-Here they are: [link to folder/playlist with 5 sample Shorts]
+We'd love to make you a pack of 5 Shorts from your existing videos, completely on us. Just reply to this email or shoot me a text at 484-889-1131 and we'll get started.
 
-We'd love to partner with you to repurpose your existing content on an ongoing basis. If it makes sense for you to think about it, we've included some options below.
-[link for free call with our team to discuss first]
-[link to packs and pricing page] 50% off through February 14th
-
-Honestly, we're just fans who also happen to do this for a living. Your long-form content deserves way more reach than it's getting.
+Either way, keep making great stuff.
 
 Warmest Regards,
 Zack
@@ -40,17 +37,15 @@ Mobile | 484-889-1131
 ---
 
 PERSONALIZATION NOTES:
-• [First Name]: creator's first name from their channel/about page
-• [specific recent video title]: pick a recent video you genuinely enjoyed, reference something specific about it if possible
-• [recent video topic]: 2-3 word topic summary for the subject line (e.g., "spider-man" or "budget tips")
-• [link to folder/playlist with 5 sample Shorts]: Google Drive folder or unlisted YouTube playlist with all 5 Shorts
+• [Channel Name]: their YouTube channel name exactly as it appears
+• [channel niche]: their content area ("film commentary," "personal finance," etc.)
 
 WHY THIS WORKS:
-• 5 Shorts is a statement. It says "I actually sat with your content and cared enough to make a whole batch." The fan angle is genuine and disarming. No pitch, no CTA. Pure value delivery. They can't ignore someone who put in this much effort.
+• The subject line with their channel name makes it impossible to ignore. It's clearly personal, not mass-sent. Opens with genuine fan energy. Zero links keeps it clean and out of spam.
 
 DELIVERABILITY NOTES:
-• Word count: 72
-• Links: 1 (the sample pack)
+• Word count: 90
+• Links: 0
 • Spam trigger words: None
 • Format: Plain text
 ```
@@ -61,19 +56,19 @@ EMAIL 2 of 5: The Insight
 Send: Day 3 of sequence
 ═══════════════════════════════════════════
 
-SUBJECT: your [channel niche] audience on shorts
+SUBJECT: [channel niche] creators on shorts right now
 
 ---
 
-Hey [First Name],
+Hello there!
 
-Quick thought on those 5 Shorts I sent over.
+Quick thought I wanted to share.
 
-Creators in [their niche] with a similar sub count to yours are pulling 50K-200K views per Short, even when their long-form averages 10-30K. The algorithm treats them as a totally separate discovery channel.
+Creators in [their niche] with a similar sub count to yours are pulling 50K-200K views per Short, even when their long-form averages way less. The algorithm treats Shorts as a completely separate discovery channel.
 
-Those 5 clips I made were just from [number] of your videos. Your full catalog has probably [estimated number] more sitting in it.
+Most of your catalog would translate really well. You're sitting on a lot of untapped reach.
 
-Curious if you've thought about it at all. We know timing is everything so, if the timing's right, the links below will get us started!
+The offer still stands. We'll make you 5 Shorts from your best clips at no cost. Just reply or text me at 484-889-1131.
 
 Warmest Regards,
 Zack
@@ -88,14 +83,13 @@ Mobile | 484-889-1131
 PERSONALIZATION NOTES:
 • [their niche]: "film commentary," "retro gaming," "personal finance," etc.
 • [channel niche]: shorter version for subject line (e.g., "horror film" or "gaming")
-• [number]: how many of their videos you actually pulled from to make the 5 Shorts (e.g., "3" or "2")
-• [estimated number]: rough estimate: (longform_count * 2) is a safe ballpark (e.g., "200+" clips)
+• Adjust the 50K-200K range to match real Shorts performance data in their niche
 
 WHY THIS WORKS:
-• References the pack of 5 naturally and reminds them the work is already done. Shares a real data point about Shorts performance. Then reframes the 5 Shorts as just a tiny fraction of what's possible from their library. Low-pressure question at the end invites a reply without demanding one.
+• Shares a real data point that reframes Shorts as a growth lever, not extra work. References their existing catalog as the asset. The CTA is a gentle reminder, not a new pitch.
 
 DELIVERABILITY NOTES:
-• Word count: 85
+• Word count: 88
 • Links: 0
 • Spam trigger words: None
 • Format: Plain text
@@ -111,11 +105,13 @@ SUBJECT: how [similar creator] added 40k subs in 3 months
 
 ---
 
-[First Name],
+Hello there!
 
-They didn't change anything about how you make videos. Let's just give your existing content a second life. Same thing we did with the first 5 clips of yours [link to first 5 clips].
+One of the [their niche] creators we work with had a similar setup to yours. Strong long-form library, solid engagement, zero Shorts. Within 3 months of posting repurposed clips, they added 40K subscribers and their long-form views actually went up too.
 
-Would it be worth 15 minutes to see if this makes sense for your channel?
+They didn't change anything about how they make videos. We just gave their existing content a second life.
+
+If you want to see what that looks like for your channel, just reply or text me at 484-889-1131. The pack of 5 is still yours.
 
 Warmest Regards,
 Zack
@@ -128,15 +124,15 @@ Mobile | 484-889-1131
 ---
 
 PERSONALIZATION NOTES:
-• [similar creator name]: use a real client name if you have permission, otherwise anonymize by niche and size ("a retro gaming channel with 90K subs")
-• [X]: their video count, to draw a parallel
-• Adjust the numbers (40K subs, 25% views increase) to match your actual results. Never fabricate
+• [similar creator]: use a real client name if you have permission, otherwise anonymize by niche and size ("a retro gaming channel with 90K subs")
+• [their niche]: match to the recipient's content area
+• Adjust the numbers (40K subs, 3 months) to match your actual results. Never fabricate.
 
 WHY THIS WORKS:
-• Social proof through a relatable story, then bridges it back to the 5 Shorts they already have. "Same thing I did with those 5 clips of yours" makes the case study feel personal, not generic. First real CTA, and 15 minutes feels low-commitment.
+• Social proof through a relatable story. Same setup, same niche, real results. "They didn't change anything" removes the objection that Shorts require new effort. The CTA feels like a natural next step, not a hard sell.
 
 DELIVERABILITY NOTES:
-• Word count: 108
+• Word count: 95
 • Links: 0
 • Spam trigger words: None
 • Format: Plain text
@@ -148,19 +144,19 @@ EMAIL 4 of 5: The Proof
 Send: Day 11 of sequence
 ═══════════════════════════════════════════
 
-SUBJECT: one more thing on those shorts
+SUBJECT: quick question about [Channel Name]
 
 ---
 
-[First Name],
+Hello there!
 
-Last thing on this. I looked at your channel more closely and ran some rough numbers.
+Last thing on this. I looked at your channel more closely.
 
-You have [longform_count] videos, most over [avg_duration] minutes. That's roughly [estimated_clips] potential Shorts sitting in your content right now. Based on what we see in [their niche], those could realistically pull [estimated monthly views] views per month combined.
+You have [longform_count] videos, most over [avg_duration] minutes long. That's roughly [estimated_clips] potential Shorts sitting in your content right now. Based on what we see in [their niche], those could realistically pull [estimated monthly views] views per month combined.
 
-The 5 I already made are yours to post whenever. We handle everything else from there: clipping, editing, captions, posting schedule. You don't touch anything.
+We handle everything. Clipping, editing, captions, posting schedule. You don't touch anything.
 
-Worth a conversation, or bad timing?
+Worth a look, or bad timing? Reply here or text me at 484-889-1131.
 
 Warmest Regards,
 Zack
@@ -180,10 +176,10 @@ PERSONALIZATION NOTES:
 • [their niche]: "film commentary," "gaming," etc.
 
 WHY THIS WORKS:
-• Gets specific with THEIR numbers. Then casually reminds them the 5 Shorts are ready to go, which lowers the barrier to starting. The binary CTA ("worth a conversation, or bad timing?") makes replying easy even if the answer is no, and "bad timing" replies often convert later.
+• Gets specific with THEIR numbers. This can't be a mass email if it references their exact video count and durations. The binary CTA ("worth a look, or bad timing?") makes replying easy even if the answer is no, and "bad timing" replies often convert later.
 
 DELIVERABILITY NOTES:
-• Word count: 102
+• Word count: 85
 • Links: 0
 • Spam trigger words: None
 • Format: Plain text
@@ -195,17 +191,17 @@ EMAIL 5 of 5: The Breakup
 Send: Day 16 of sequence
 ═══════════════════════════════════════════
 
-SUBJECT: should i close your file
+SUBJECT: last thing on [Channel Name]
 
 ---
 
-[First Name],
+Hello there!
 
-Totally understand if the timing isn't right or this isn't a priority for your channel right now.
+Completely understand if the timing isn't right or this isn't on your radar.
 
-Those 5 Shorts are yours to keep and use however you want, no strings. I genuinely enjoy your content either way.
+I'll stop filling up your inbox after this one. But if you ever want those 5 Shorts made from your content, just reply or text me at 484-889-1131. The offer stays open.
 
-If you ever want to revisit this, just reply to any of these emails and I'll pick it right back up.
+I genuinely enjoy your stuff either way. Keep it up.
 
 Warmest Regards,
 Zack
@@ -218,15 +214,14 @@ Mobile | 484-889-1131
 ---
 
 PERSONALIZATION NOTES:
-• No heavy personalization needed. The simplicity is the point
-• "Those 5 Shorts" ties back to email 1 and reinforces the gift
-• "I genuinely enjoy your content" reinforces the fan angle from email 1
+• No heavy personalization needed. The simplicity is the point.
+• "I genuinely enjoy your stuff" reinforces the fan angle from email 1.
 
 WHY THIS WORKS:
-• The breakup email consistently gets the highest reply rate in cold sequences. Giving away 5 finished Shorts with no strings creates strong reciprocity. The fan callback makes it feel human, not transactional. Many creators reply weeks or months later when they're ready.
+• The breakup email consistently gets the highest reply rate in cold sequences. Short, honest, zero pressure. "The link stays open" removes urgency while keeping the door open. Many creators come back weeks or months later when they're ready.
 
 DELIVERABILITY NOTES:
-• Word count: 65
+• Word count: 60
 • Links: 0
 • Spam trigger words: None
 • Format: Plain text
@@ -240,8 +235,8 @@ DELIVERABILITY NOTES:
 
 | Email | Day | Gap | Why this gap |
 |-------|-----|-----|-------------|
-| 1 | Day 1 | N/A | Lead with the 5-pack while the content is fresh |
-| 2 | Day 3 | 2 days | Quick follow-up while they remember the samples |
+| 1 | Day 1 | N/A | Lead with the fan angle while intent is fresh |
+| 2 | Day 3 | 2 days | Quick follow-up while they remember the first email |
 | 3 | Day 7 | 4 days | Give them breathing room before the social proof |
 | 4 | Day 11 | 4 days | Enough time to not feel aggressive |
 | 5 | Day 16 | 5 days | Longer gap makes the breakup feel genuine |
@@ -252,22 +247,22 @@ Best send times: Tuesday-Thursday, 9-11 AM in the recipient's local timezone. Av
 
 | Email | Primary | Variant A | Variant B |
 |-------|---------|-----------|-----------|
-| 1 | made 5 shorts from your [topic] videos | pulled 5 clips from your channel | your [topic] videos as shorts |
-| 2 | your [niche] audience on shorts | thought about your back catalog | something interesting about shorts in [niche] |
-| 3 | how [creator] added 40k subs in 3 months | what happened when [creator] tried shorts | 40k new subs from existing videos |
-| 4 | one more thing on those shorts | ran some numbers on your channel | your [X] videos as shorts |
-| 5 | should i close your file | closing the loop | totally fine if not |
+| 1 | Thinking about YouTube shorts for [Channel Name]? | shorts idea for [Channel Name]? | [Channel Name] as shorts? |
+| 2 | shorts potential for [Channel Name]? | [Channel Name] shorts data? | quick thought about [Channel Name]? |
+| 3 | what shorts could do for [Channel Name]? | a shorts story similar to [Channel Name]? | 40k subs from existing videos? |
+| 4 | ran some numbers on [Channel Name]? | [Channel Name] has [X] clips waiting? | looked at [Channel Name] closer? |
+| 5 | last note about [Channel Name] shorts? | closing the loop on [Channel Name]? | totally fine if not? |
 
 ## 3. Reply Handling Guidance
 
-**Positive reply ("Sure, let's chat" / "Tell me more" / "I watched the Shorts, they're great"):**
+**Positive reply ("Sure, let's chat" / "Tell me more" / texts your number):**
 - Reply within 2 hours if possible, same day at latest
 - Send a Calendly or specific time options (2-3 slots)
-- Keep it short: "Awesome, glad you liked them. Here are a few times that work this week: [times]. Pick whatever's easiest."
+- Keep it short: "Awesome, glad you're interested. Here are a few times that work this week: [times]. Pick whatever's easiest."
 
 **Objection reply ("Too expensive" / "Not sure about quality" / "I do my own shorts"):**
 - Acknowledge their concern directly. Don't deflect
-- "Totally fair. Most creators we work with felt the same way initially. You've already got the 5 samples. Those are the actual quality we deliver. Would it help if I showed you the results from [similar channel]?"
+- "Totally fair. The 5 we make for you are yours to keep and post regardless. That way you can judge the quality before committing to anything."
 - If they do their own shorts: "That's great, not many in your niche do. If you ever want to scale the volume without the time investment, I'm around."
 
 **"Not interested" / "Remove me":**
@@ -309,7 +304,6 @@ Best send times: Tuesday-Thursday, 9-11 AM in the recipient's local timezone. Av
 - Your scraper finds 5-40 qualified channels per run
 - At that volume, one Gmail account is sufficient
 - If you scale beyond 50/day, add a second sending account
-- Note: each lead requires creating 5 sample Shorts upfront, so factor production time into your daily capacity
 
 ## 6. Metrics to Track
 
@@ -318,7 +312,8 @@ Best send times: Tuesday-Thursday, 9-11 AM in the recipient's local timezone. Av
 | Open rate | 50-60% | 70%+ |
 | Reply rate (any reply) | 5-10% | 15%+ |
 | Positive reply rate | 2-5% | 8%+ |
+| Text message rate | 1-3% | 5%+ |
 | Bounce rate | Under 3% | Under 1% |
 | Spam complaint rate | Under 0.1% | 0% |
 
-Note: With this sequence, your pack of 5 sample Shorts in email 1 should drive significantly higher reply rates than a typical cold sequence since you're leading with a substantial amount of delivered value. Expect email 1 and email 5 to generate the most replies.
+Note: Track replies and text messages as your key conversion metrics. Creators who reply or text are high-intent. Prioritize their Shorts production and follow up quickly (within 24 hours).
