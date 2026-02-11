@@ -1,26 +1,13 @@
-// Configuration - Replace these with your actual Stripe keys
-const STRIPE_PUBLISHABLE_KEY = 'pk_live_51SXNg3JkSt0JSgSxsW7CLYsr3G0al9CckviSYweRXgp2wjj6rfEaPtNCiMivvTgWUXhujKfJ6w6lpiGmTM4WAp8n00MDXp5hNq';
-
-// Price IDs mapping - Replace with your actual Stripe Price IDs
-const PRICE_IDS = {
-    'PRICE_ID_10_PACK': 'price_1SyIw5JkSt0JSgSxllTL3hfd',
-    'PRICE_ID_25_PACK': 'price_1SyJ7YJkSt0JSgSxXSgvHrA0',
-    'PRICE_ID_50_PACK': 'price_1SyJAUJkSt0JSgSxI4S1V0LU',
-    'PRICE_ID_100_PACK': 'price_1SyJDGJkSt0JSgSxaNWrOXL0'
+// Payment Links - Get these from Stripe Dashboard → Products → Create Payment Link
+const PAYMENT_LINKS = {
+    'PRICE_ID_10_PACK': 'https://buy.stripe.com/YOUR_10_PACK_LINK',
+    'PRICE_ID_25_PACK': 'https://buy.stripe.com/YOUR_25_PACK_LINK',
+    'PRICE_ID_50_PACK': 'https://buy.stripe.com/YOUR_50_PACK_LINK',
+    'PRICE_ID_100_PACK': 'https://buy.stripe.com/YOUR_100_PACK_LINK'
 };
-
-// Initialize Stripe
-let stripe;
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Stripe (will fail gracefully if key is placeholder)
-    try {
-        stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-    } catch (error) {
-        console.error('Stripe initialization failed. Please add your publishable key to script.js');
-    }
-
     // Initialize countdown timer
     initCountdown();
 
@@ -60,64 +47,26 @@ function initCountdown() {
     setInterval(updateCountdown, 1000);
 }
 
-// Handle checkout button click
-async function handleCheckout(event) {
+// Handle checkout button click - Redirect to Stripe Payment Link
+function handleCheckout(event) {
     const button = event.target;
     const priceIdKey = button.getAttribute('data-price-id');
-    const packageName = button.getAttribute('data-package');
-
-    // Validate Stripe is initialized
-    if (!stripe) {
-        alert('Payment system is not configured. Please contact support.');
-        console.error('Stripe not initialized. Check your publishable key in script.js');
-        return;
-    }
-
-    // Get the actual Price ID
-    const priceId = PRICE_IDS[priceIdKey];
-
-    if (!priceId || priceId.startsWith('price_YOUR_')) {
+    
+    // Get the payment link
+    const paymentLink = PAYMENT_LINKS[priceIdKey];
+    
+    if (!paymentLink || paymentLink.includes('YOUR_')) {
         alert('This product is not yet configured. Please contact support.');
-        console.error(`Price ID not configured for ${priceIdKey}. Update PRICE_IDS in script.js`);
+        console.error(`Payment link not configured for ${priceIdKey}`);
         return;
     }
-
-    // Disable button and show loading state
-    button.disabled = true;
-    const originalText = button.textContent;
-    button.textContent = 'Loading...';
-    button.classList.add('loading');
-
-    try {
-        // Redirect to Stripe Checkout
-        const { error } = await stripe.redirectToCheckout({
-            lineItems: [{
-                price: priceId,
-                quantity: 1
-            }],
-            mode: 'payment',
-            successUrl: window.location.origin + '/success.html?session_id={CHECKOUT_SESSION_ID}',
-            cancelUrl: window.location.origin + '/cancel.html',
-            clientReferenceId: packageName,
-            // Optional: Auto-apply discount coupon
-            // discounts: [{
-            //     coupon: 'YOUR_COUPON_CODE_HERE'
-            // }]
-        });
-
-        if (error) {
-            console.error('Stripe Checkout error:', error);
-            alert('Unable to process checkout. Please try again or contact support.');
-        }
-    } catch (error) {
-        console.error('Checkout error:', error);
-        alert('An error occurred. Please try again.');
-    } finally {
-        // Re-enable button
-        button.disabled = false;
-        button.textContent = originalText;
-        button.classList.remove('loading');
-    }
+    
+    // Track the click
+    const packageName = button.getAttribute('data-package');
+    trackEvent('checkout_initiated', { package: packageName });
+    
+    // Redirect to Stripe Payment Link
+    window.location.href = paymentLink;
 }
 
 // Optional: Track analytics events
